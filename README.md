@@ -25,9 +25,9 @@ Additionally you can find a Gender and Age detection model implementatin in the 
 
 ## Requirements
 
-Python (tested with version 3.10.0)
-OpenCV (tested with version 4.9.0.80)
-NumPy (tested with version 1.26.4)
+- Python (tested with version 3.10.0)
+- OpenCV (tested with version 4.9.0.80)
+- NumPy (tested with version 1.26.4)
 
 ## Create a Virtual Environment (Optional)
 

@@ -2,7 +2,6 @@ import cv2
 import numpy as np
 
 
-# Resize the image
 def resize_image(img: np.ndarray, new_width: int, new_height: int) -> np.ndarray:
     """
     Resizes an image to a specified width and height.
@@ -19,126 +18,11 @@ def resize_image(img: np.ndarray, new_width: int, new_height: int) -> np.ndarray
     return resized_img
 
 
-def change_color_space(img: np.ndarray, color_space: str) -> np.ndarray:
-    """
-    Converts an image to a specified color space.
+def convert_to_grayscale(img: np.ndarray) -> np.ndarray:
+    """ """
+    grayscale_image = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
-    Args:
-        img: A NumPy array representing the image (assumed to be in BGR format).
-        color_space: The target color space (e.g., "HSV", "LAB", "GRAY", "HSL").
-
-    Returns:
-        A NumPy array representing the image in the new color space.
-
-    Raises:
-        ValueError: If the specified color space is not supported.
-    """
-
-    conversion_codes = {
-        "HSV": cv2.COLOR_BGR2HSV,
-        "LAB": cv2.COLOR_BGR2LAB,
-        "GRAY": cv2.COLOR_BGR2GRAY,
-        "HSL": cv2.COLOR_BGR2HLS,
-    }
-
-    if color_space not in conversion_codes:
-        raise ValueError(f"Unsupported color space: {color_space}")
-
-    return cv2.cvtColor(img, conversion_codes[color_space])
-
-
-# Add text to the image
-def add_text_to_image(img: np.ndarray, text: str) -> np.ndarray:
-    """
-    Adds text to an image.
-
-    Args:
-    img: A NumPy array representing the image.
-    text: The text to be added.
-
-    Returns:
-    A NumPy array representing the image with text added.
-
-    This function does not modify the original image and returns a new image with text.
-    """
-    font = cv2.FONT_HERSHEY_SIMPLEX
-    return cv2.putText(img, text, (10, 30), font, 1, (0, 255, 0), 2, cv2.LINE_AA)
-
-
-# def modify_pixel_value(
-#     img: np.ndarray,
-#     new_r: int,
-#     new_g: int,
-#     new_b: int,
-#     pixel_position_x: int,
-#     pixel_position_y: int,
-# ) -> np.ndarray:
-#     """
-#     Modifies the value of a single pixel in a BGR image.
-
-#     Args:
-#     img: A NumPy array representing the BGR image.
-#     new_r: The new red value for the pixel (0-255).
-#     new_g: The new green value for the pixel (0-255).
-#     new_b: The new blue value for the pixel (0-255).
-#     pixel_position_x: The X coordinate of the pixel to modify.
-#     pixel_position_y: The Y coordinate of the pixel to modify.
-
-#     Returns:
-#     A NumPy array representing the modified image with the updated pixel value.
-
-#     This function modifies the original image in-place and returns it.
-#     """
-
-#     # Accessing and modifying pixel values
-#     pixel_value = img[pixel_position_x, pixel_position_y]
-#     print("Original pixel value:", pixel_value)
-
-#     img[pixel_position_x, pixel_position_y] = [
-#         new_b,
-#         new_g,
-#         new_r,
-#     ]
-#     print("Modified pixel value:", img[pixel_position_x, pixel_position_y])
-
-#     return img
-
-
-def modify_pixel_value(
-    img: np.ndarray,
-    new_r: int,
-    new_g: int,
-    new_b: int,
-    start_x: int,
-    start_y: int,
-    end_x: int,
-    end_y: int,
-) -> np.ndarray:
-    """
-    Modifies the pixel values within a rectangular area in a BGR image.
-
-    Args:
-        img: A NumPy array representing the BGR image.
-        new_r: The new red value for the pixels (0-255).
-        new_g: The new green value for the pixels (0-255).
-        new_b: The new blue value for the pixels (0-255).
-        start_x: The X coordinate of the top-left corner of the area.
-        start_y: The Y coordinate of the top-left corner of the area.
-        end_x: The X coordinate (exclusive) of the bottom-right corner of the area + 1.
-        end_y: The Y coordinate (exclusive) of the bottom-right corner of the area + 1.
-
-    Returns:
-        A NumPy array representing the modified image with the updated pixel values.
-
-    This function modifies the original image in-place and returns it.
-    """
-
-    img[start_y:end_y, start_x:end_x] = [
-        new_b,
-        new_g,
-        new_r,
-    ]  # Set all pixels to new color
-    return img
+    return grayscale_image
 
 
 def flip_image(
@@ -239,3 +123,57 @@ def crop_image(
     cropped_img = img[top_left_y : bottom_right_y + 1, top_left_x : bottom_right_x + 1]
 
     return cropped_img
+
+
+def add_text_to_image(img: np.ndarray, text: str) -> np.ndarray:
+    """
+    Adds text to an image.
+
+    Args:
+    img: A NumPy array representing the image.
+    text: The text to be added.
+
+    Returns:
+    A NumPy array representing the image with text added.
+
+    This function does not modify the original image and returns a new image with text.
+    """
+    font = cv2.FONT_HERSHEY_SIMPLEX
+    return cv2.putText(img, text, (10, 30), font, 1, (0, 255, 0), 2, cv2.LINE_AA)
+
+
+def modify_pixel_value(
+    img: np.ndarray,
+    new_r: int,
+    new_g: int,
+    new_b: int,
+    start_x: int,
+    start_y: int,
+    end_x: int,
+    end_y: int,
+) -> np.ndarray:
+    """
+    Modifies the pixel values within a rectangular area in a BGR image.
+
+    Args:
+        img: A NumPy array representing the BGR image.
+        new_r: The new red value for the pixels (0-255).
+        new_g: The new green value for the pixels (0-255).
+        new_b: The new blue value for the pixels (0-255).
+        start_x: The X coordinate of the top-left corner of the area.
+        start_y: The Y coordinate of the top-left corner of the area.
+        end_x: The X coordinate (exclusive) of the bottom-right corner of the area + 1.
+        end_y: The Y coordinate (exclusive) of the bottom-right corner of the area + 1.
+
+    Returns:
+        A NumPy array representing the modified image with the updated pixel values.
+
+    This function modifies the original image in-place and returns it.
+    """
+
+    img[start_y:end_y, start_x:end_x] = [
+        new_b,
+        new_g,
+        new_r,
+    ]  # Set all pixels to new color
+    return img

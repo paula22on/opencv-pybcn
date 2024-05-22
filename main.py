@@ -12,10 +12,10 @@ from config import (
     RESIZE_IMAGE,
     ROTATE_IMAGE_MULTIPLE_90,
 )
-from opencv_functions.advanced_functions import edge_detection
+from opencv_functions.advanced_functions import change_color_space, edge_detection
 from opencv_functions.basic_functions import (
     add_text_to_image,
-    change_color_space,
+    convert_to_grayscale,
     crop_image,
     flip_image,
     modify_pixel_value,
@@ -68,7 +68,7 @@ if FLIP_IMAGE:
     modified_image = flip_image(img, flip_horizontal=True, flip_vertical=True)
 
 if ROTATE_IMAGE_MULTIPLE_90:
-    modified_image = rotate_image_multiple_of_90(img, angle=270)
+    modified_image = rotate_image_multiple_of_90(img, angle=180)
 
 if CROP_IMAGE:
     modified_image = crop_image(

@@ -3,16 +3,25 @@ import cv2
 from config import (
     ADD_TEXT_TO_IMAGE,
     CHANGE_COLOR_SPACE,
+    CONVERT_TO_GRAYSCALE,
     CROP_IMAGE,
     EDGE_DETECTION,
     FLIP_IMAGE,
+    IMAGE_2_PATH,
+    MATCH_KEY_POINTS,
     MODIFY_PIXEL_VALUE,
+    ORB_FEATURE_DETECTOR,
     ORIGINAL_IMAGE_PATH,
     OUTPUT_IMAGE_PATH,
     RESIZE_IMAGE,
     ROTATE_IMAGE_MULTIPLE_90,
 )
-from opencv_functions.advanced_functions import change_color_space, edge_detection
+from opencv_functions.advanced_functions import (
+    change_color_space,
+    edge_detection,
+    match_key_points_between_two_images,
+    orb_feature_detector,
+)
 from opencv_functions.basic_functions import (
     add_text_to_image,
     convert_to_grayscale,
@@ -25,6 +34,7 @@ from opencv_functions.basic_functions import (
 
 # Load an image (replace "path/to/image.jpg" with your actual image path)
 img = cv2.imread(ORIGINAL_IMAGE_PATH)
+img2 = cv2.imread(IMAGE_2_PATH)
 
 # Check if image loaded successfully
 if img is None:
@@ -46,8 +56,8 @@ cv2.waitKey(0)  # Wait for a key press to close the window
 if RESIZE_IMAGE:
     modified_image = resize_image(img, new_width=500, new_height=400)
 
-if CHANGE_COLOR_SPACE:
-    modified_image = change_color_space(img, color_space="LAB")
+if CONVERT_TO_GRAYSCALE:
+    modified_image = convert_to_grayscale(img)
 
 if ADD_TEXT_TO_IMAGE:
     modified_image = add_text_to_image(img, text="Hi! :)")
@@ -83,11 +93,19 @@ if CROP_IMAGE:
 if EDGE_DETECTION:
     modified_image = edge_detection(img, algorithm="Sobel")
 
+if CHANGE_COLOR_SPACE:
+    modified_image = change_color_space(img, color_space="LAB")
+
+if ORB_FEATURE_DETECTOR:
+    modified_image = orb_feature_detector(img)
+
+if MATCH_KEY_POINTS:
+    modified_image = match_key_points_between_two_images(img, img2)
+
 
 # Display modified image
 cv2.imshow("Modified Image", modified_image)
 cv2.waitKey(0)
-
 
 # Save the modified image TODO: ADD A GENERIC PATH
 cv2.imwrite(OUTPUT_IMAGE_PATH, modified_image)

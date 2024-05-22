@@ -46,7 +46,7 @@ Using venv module (Python 3.3+):
 1. Install OpenCV and NumPy using pip within the activated virtual environment:
 
    ```
-   pip install opencv-python numpy
+   pip install -r requirements.txts
    ```
 
 ## Usage
@@ -101,3 +101,5 @@ The function performs the following steps:
 8. Appends bounding box coordinates to the list.
 9. Draws green rectangles around the detected faces on the frame copy.
 10. Returns the frame with highlights and the list of detected face bounding boxes.
+
+_This project is a modification from the code in https://github.com/smahesh29/Gender-and-Age-Detection_

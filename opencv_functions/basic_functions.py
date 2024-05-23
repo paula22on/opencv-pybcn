@@ -19,7 +19,14 @@ def resize_image(img: np.ndarray, new_width: int, new_height: int) -> np.ndarray
 
 
 def convert_to_grayscale(img: np.ndarray) -> np.ndarray:
-    """ """
+    """Converts a BGR image to grayscale.
+
+    Args:
+        img: A numpy array representing a BGR image.
+
+    Returns:
+        A numpy array representing the grayscale version of the input image.
+    """
     grayscale_image = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
     return grayscale_image
@@ -49,9 +56,9 @@ def flip_image(
     if flip_horizontal and flip_vertical:
         flipped_img = cv2.flip(img, -1)  # Horizontal and vertical
     elif flip_horizontal:
-        flipped_img = cv2.flip(img, 0)  # Horizontal flip
+        flipped_img = cv2.flip(img, 0)  # Vertical flip
     elif flip_vertical:
-        flipped_img = cv2.flip(img, 1)  # Vertical flip
+        flipped_img = cv2.flip(img, 1)  # Vertical and Horizontal flip
 
     return flipped_img
 

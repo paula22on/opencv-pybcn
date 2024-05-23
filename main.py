@@ -94,7 +94,7 @@ if EDGE_DETECTION:
     modified_image = edge_detection(img, algorithm="Sobel")
 
 if CHANGE_COLOR_SPACE:
-    modified_image = change_color_space(img, color_space="LAB")
+    modified_image = change_color_space(img, color_space="HSL")
 
 if ORB_FEATURE_DETECTOR:
     modified_image = orb_feature_detector(img)

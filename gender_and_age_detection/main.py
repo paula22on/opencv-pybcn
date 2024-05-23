@@ -3,6 +3,7 @@ import cv2
 from utils import detect_faces_in_frame
 
 print("Initializing variables...")
+
 # Define paths to pre-trained models
 face_detection_prototxt = "models/opencv_face_detector.pbtxt"
 face_detection_model = "models/opencv_face_detector_uint8.pb"
@@ -37,7 +38,6 @@ gender_net = cv2.dnn.readNet(
     gender_classification_model, gender_classification_prototxt
 )
 
-print("Loading pretrained models...")
 # Open video capture (0 for webcam, or path to video file)
 video_capture = cv2.VideoCapture(0)
 

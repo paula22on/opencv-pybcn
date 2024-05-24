@@ -61,6 +61,9 @@ Using venv module (Python 3.3+):
 
 **Remember to activate your virtual environment before running the script.**
 
+## Download Pre-trained models
+You can download the models in this link: https://drive.google.com/drive/folders/1vArdzzYsDOhstLSggxQUcbrYWQ62jmuI?usp=drive_link
+
 ## Code Structure
 
 - `gender_and_age_detection.py` (empty): This file serves as the main project directory.

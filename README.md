@@ -2,7 +2,20 @@
 
 This project provides a set of basic and advanced image processing operations using OpenCV, a popular computer vision library.
 
+The objective of this reposiroty is to show different image processing techniques and how to implement them.
+
+To facilitate testing and experimentation, the repository includes a configuration file (config.py) that allows you to select which image processing technique you want to try out (just set one of them to True). Once you've made your selection and executed the main.py script, the program will display the original image and the transformed image side by side for comparison.
+
 Additionally you can find a Gender and Age detection model implementatin in the folder "gender_and_age_detection"
+
+## Folder structure:
+- main.py: Main script to run the image processing techniques and call the functions from the /opencv_functions folder.
+- config.py: Configuration file to select which image processing technique you want to test and set the necessary parameters.
+- requirements.txt: List of Python packages and dependencies required to run the code.
+- /opencv-functions: Folder containing the image processing functions for computer vision, separated into basics and advanced.
+  - basic_functions.py: Functions that will help ingest the images but don't provide any additional information to the model.
+  - advanced_functions.py: Functions to extract features from image that can be used to train AI models.
+- /gender-and-age-detector: Folder containing the code and pre-trained model to run a Gender and Age detector.(It has a separate README file inside the folder).
 
 ## Image Processing Operations
 

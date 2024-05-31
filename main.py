@@ -45,11 +45,11 @@ if img is None:
 image_size = img.shape
 image_type = img.dtype
 
-print("Image size:", image_size)
-print("Image data type:", image_type)
+print(f"Image size: {image_size}")
+print(f"Image data type: {image_type}")
 
 # Display the original image
-cv2.imshow("Original Image", img)
+cv2.imshow(f"Original Image {img}")
 cv2.waitKey(0)  # Wait for a key press to close the window
 
 # Basic Image Operations Using OpenCV
@@ -102,14 +102,12 @@ if ORB_FEATURE_DETECTOR:
 if MATCH_KEY_POINTS:
     modified_image = match_key_points_between_two_images(img, img2)
 
-
 # Display modified image
-cv2.imshow("Modified Image", modified_image)
+cv2.imshow(f"Modified Image {modified_image}")
 cv2.waitKey(0)
 
-# Save the modified image TODO: ADD A GENERIC PATH
 cv2.imwrite(OUTPUT_IMAGE_PATH, modified_image)
-print("Image saved as modified_image.jpg")
+print(f"Image saved as {OUTPUT_IMAGE_PATH}")
 
 # Close all windows
 cv2.destroyAllWindows()
